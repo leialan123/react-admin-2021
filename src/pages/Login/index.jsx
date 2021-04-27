@@ -26,9 +26,9 @@ export default class Login extends Component {
         // console.log('接口返回内容', response.data);// { status: 0, data: {}} / { status: 1, msg: 'XXX'}
 
         // 不加 await 就还是 promise，加了就是 response,等待返回成功的 response.data
-        const result =  await reqLogin(username, password); // { status: 0, data: {}} / { status: 1, msg: 'XXX'}
+        // const result =  await reqLogin(username, password); // { status: 0, data: {}} / { status: 1, msg: 'XXX'}
         // 模拟登录验证成功返回用户信息数据
-        // const  result = {status: 0, data: {username: '张三'}};
+        const  result = {status: 0, data: {username: '张三'}};
         if (result.status === 0) {
             message.success('登录验证成功');
             console.log('返回数据：', result.data);

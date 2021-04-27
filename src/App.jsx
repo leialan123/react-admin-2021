@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from './pages/Login'
-import Home from './pages/Home'
+import Admin from './pages/Admin'
 import './index.less'
 
 // 应用根组件
@@ -11,7 +11,7 @@ export default class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route path='/login' component={Login} ></Route>
-                    <Route path='/home' component={Home} ></Route>
+                    <Route path='/' component={Admin} ></Route>
                 </Switch>
             </BrowserRouter>
         )
