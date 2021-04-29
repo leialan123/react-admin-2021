@@ -19,6 +19,7 @@ const menuArray = [
             url: '/home',
             idDeleted: 'n'
         },
+        parentUrl: '',
     },
     {
         id: "base_data",
@@ -28,9 +29,11 @@ const menuArray = [
                 children: [],
                 data: {
                     name: '主数据维护',
+                    // url: '/supplier',
                     url: '/main_data_manage',
                     idDeleted: 'n'
                 },
+                parentUrl: '/base_data',
             },
             {
                 id: "depreciation_category",
@@ -40,6 +43,7 @@ const menuArray = [
                     url: '/depreciation_category',
                     idDeleted: 'y'
                 },
+                parentUrl: '/base_data',
             },
             {
                 id: "entry_name",
@@ -49,6 +53,7 @@ const menuArray = [
                     url: '/entry_name',
                     idDeleted: 'n'
                 },
+                parentUrl: '/base_data',
             },
             {
                 id: "warehouse_name",
@@ -58,6 +63,7 @@ const menuArray = [
                     url: '/warehouse_name',
                     idDeleted: 'n'
                 },
+                parentUrl: '/base_data',
             },
             {
                 id: "warehouse_allocation",
@@ -67,6 +73,7 @@ const menuArray = [
                     url: '/warehouse_allocation',
                     idDeleted: 'n'
                 },
+                parentUrl: '/base_data',
             },
         ],
         data: {
@@ -74,6 +81,7 @@ const menuArray = [
             url: '/base_data',
             idDeleted: 'n'
         },
+        parentUrl: '',
     },
     {
         id: 'inventory_manage',
@@ -86,6 +94,7 @@ const menuArray = [
                     url: '/warehouse_in',
                     idDeleted: 'n'
                 },
+                parentUrl: '/inventory_manage',
             },
             {
                 id: "warehouse_out",
@@ -95,6 +104,7 @@ const menuArray = [
                     url: '/warehouse_out',
                     idDeleted: 'n'
                 },
+                parentUrl: '/inventory_manage',
             },
             {
                 id: "warehouse_init",
@@ -104,6 +114,7 @@ const menuArray = [
                     url: '/warehouse_init',
                     idDeleted: 'n'
                 },
+                parentUrl: '/inventory_manage',
             },
             {
                 id: "inventory_depreciation",
@@ -116,15 +127,18 @@ const menuArray = [
                             url: '/fixed_assets_list',
                             idDeleted: 'n'
                         },
+                        parentUrl: '/inventory_depreciation',
                     },
                     {
-                        id: "inventory_depreciation_list",
+                        id: "supplier",
                         children: [],
                         data: {
                             name: '库存折旧清单',
-                            url: '/inventory_depreciation_list',
-                            idDeleted: 'y'
+                            url: '/supplier',
+                            // url: '/inventory_depreciation_list',
+                            idDeleted: 'n'
                         },
+                        parentUrl: '/inventory_depreciation',
                     },
                 ],
                 data: {
@@ -132,13 +146,15 @@ const menuArray = [
                     url: '/inventory_depreciation',
                     idDeleted: 'n'
                 },
+                parentUrl: '/inventory_manage',
             },
         ],
         data: {
             name: '库存管理',
             url: '/inventory_manage',
             idDeleted: 'n'
-        }
+        },
+        parentUrl: '',
     },
 ]
 

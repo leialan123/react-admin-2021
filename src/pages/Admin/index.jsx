@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
-import { Layout } from 'antd'
+import React, { Component } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { Layout } from 'antd';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
 } from '@ant-design/icons';
 
-import LeftNav from '../../components/left-nav'
-import memoryUtils from '../../utils/memoryUtils'
-import storageUtils from '../../utils/storageUtils'
+import LeftNav from '../../components/left-nav';
+import memoryUtils from '../../utils/memoryUtils';
+import storageUtils from '../../utils/storageUtils';
 
-import Home from '../Home'
-import Supplier from '../Supplier'
+import Home from '../Home';
+import Supplier from '../Supplier';
+import MainData from '../MainData';
 
-import styles from './index.module.less'
+import styles from './index.module.less';
+
 
 const { Header, Sider, Content } = Layout;
 
@@ -62,6 +64,7 @@ export default class Admin extends Component {
                         <Switch>
                             <Route path='/home' component={Home}/>
                             <Route path='/supplier' component={Supplier}/>
+                            <Route path='/main_data_manage' component={MainData}/>
                             <Redirect to='/home' />
                             {/*<Route exact path='/' render={() => <Redirect to='/home' />}/>*/}
                         </Switch>
