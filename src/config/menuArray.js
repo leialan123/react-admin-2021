@@ -8,7 +8,7 @@ const menuIcon ={
     home: <AppstoreOutlined />,
     base_data: <PieChartOutlined />,
     inventory_manage: <MailOutlined />
-}
+};
 
 const menuArray = [
     {
@@ -156,9 +156,22 @@ const menuArray = [
         },
         parentUrl: '',
     },
-]
+];
+
+// 获取一级菜单栏
+let rootSubmenuKeys = [];
+const getRootSubmenuKeys = menuArray => {
+    menuArray.map(menObj => {
+        if (!menObj.parentUrl) {
+            rootSubmenuKeys = [...rootSubmenuKeys, menObj.data.url];
+        }
+    });
+
+    return rootSubmenuKeys;
+};
 
 export {
     menuIcon,
     menuArray,
+    getRootSubmenuKeys,
 }

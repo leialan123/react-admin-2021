@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import { NavLink, withRouter } from 'react-router-dom';
-import { menuIcon, menuArray } from '../../config/menuArray';
+import { menuIcon, menuArray, getRootSubmenuKeys } from '../../config/menuArray';
 
 import { menuTree, getNewMenuArray, initKeys } from '../../utils/menuListUtils';
 
 const { SubMenu } = Menu;
-// 一级菜单栏
-const rootSubmenuKeys = ['/inventory_manage', '/base_data', '/home'];
 
 class LeftNav extends Component {
 
     state = {
         openKeys: [],
     };
-
-    path = this.props.location.pathname; // 当前路由的 path
+    
+    rootSubmenuKeys = getRootSubmenuKeys(menuArray); // 一级菜单栏
+    path = this.props.location.pathname; // 首次进入页面获取当前路由的 path
     menuTreeObj = menuTree(menuArray); // 处理之后的菜单栏数据
 
     onOpenChange = keys => {
         const { openKeys } = this.state;
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
 
-        // 根据 path 应该展开的菜单栏数组
-        const pathOpenKeys = getNewMenuArray(this.menuTreeObj, this.path);
+        // 根据当前 path 获取应该展开的菜单栏数组
+        const pathOpenKeys = getNewMenuArray(this.menuTreeObj, this.props.location.pathname);
 
-        console.log(pathOpenKeys, '{}');
+        // console.log(pathOpenKeys, '{}');
 
-        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+        if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
             this.setState({
                 openKeys: keys,
             })
         } else {
             let isCurrent = false; // 判断是否是包含当前 path 的菜单栏
-
             pathOpenKeys.map(item => {
                 if (item === latestOpenKey) {
+                    console.log(333)
                     isCurrent = true;
                 }
             });
@@ -57,7 +56,7 @@ class LeftNav extends Component {
 
         this.setState({
             openKeys: item.keyPath,
-        })
+        });
     };
 
     getMenuList = menuArray => {
@@ -82,6 +81,7 @@ class LeftNav extends Component {
 
     // 使用新版即将废除的旧生命周期钩子
     UNSAFE_componentWillMount() {
+        // this.rootSubmenuKeys = getRootSubmenuKeys(menuArray); // 一级菜单栏
         this.menuNode = this.getMenuList(menuArray);
         const openKeys = getNewMenuArray(this.menuTreeObj, this.path);
         this.setState({

@@ -2,9 +2,9 @@ import { arrayUnique, arrayObjExistence } from './arrayUtils';
 
 // 对后端返回的菜单栏数据进行处理
 let menuTreeObj = [];
-const menuTree = menuArray => {
+const menuTree = (menuArray = []) => {
     menuArray.map(menuObj => {
-        let obj = {}
+        let obj = {};
         if (menuObj.children.length === 0){
             obj[menuObj.data.url] = menuObj.parentUrl;
             const iseExistence = arrayObjExistence(menuTreeObj, obj, menuObj.data.url);
@@ -25,9 +25,9 @@ const menuTree = menuArray => {
 
 // 根据当前 path 获取应该展开的菜单栏
 let initOpenKeys = [];
-
-const getNewMenuArray = (menuTrees, path) => {
-    initOpenKeys = arrayUnique(initOpenKeys);
+const getNewMenuArray = (menuTrees = [], path) => {
+    // 去除重复的菜单栏 path
+    // initOpenKeys = arrayUnique(initOpenKeys);
 
     menuTrees.map(item => {
         if (item[path]) {
