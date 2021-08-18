@@ -5,6 +5,7 @@ export default class MainData extends Component {
         return (
             <div>
                 MainData
+                
             </div>
         )
     }

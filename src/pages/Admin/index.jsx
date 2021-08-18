@@ -13,6 +13,7 @@ import storageUtils from '../../utils/storageUtils';
 import Home from '../Home';
 import Supplier from '../Supplier';
 import MainData from '../MainData';
+import MyHeader from '../../components/header';
 
 import styles from './index.module.less';
 
@@ -40,6 +41,8 @@ export default class Admin extends Component {
 
     render(){
         const user = memoryUtils.user;
+        
+        const { collapsed } = this.state
 
         // 如果内存中没有存储 user，user为{}，则说明没有登录，自动返回到登录页面
         if (!user.username) {
@@ -50,14 +53,16 @@ export default class Admin extends Component {
         return(
             <Layout style={{ height: '100vh'}}>
                 <Header className={styles.header}>
-                    {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
                         onClick: this.toggle,
                         style: {fontSize: '20px'},
                     })}
+
+                    <MyHeader style={{ display: 'flex' }} />
                 </Header>
                 <Layout>
-                    <Sider className={styles.leteMenu} trigger={null} collapsible collapsed={this.state.collapsed}>
+                    <Sider className={styles.leftMenu} trigger={null} collapsible collapsed={collapsed}>
                         <LeftNav />
                     </Sider>
                     <Content>
